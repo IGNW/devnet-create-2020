@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/jquery-ui-1.12.1.custom/jquery-ui.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/base.css') }}">
+
+  <script src="{{ url_for('static', filename='styles/jquery-ui-1.12.1.custom/external/jquery/jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='styles/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
+  <script src=""></script>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+<div class="header">
+    <h1><a href="#" onclick="window.location.reload(true);"><img src="{{ url_for('static', filename='images/Logo+orngwhite.png') }}">DevNet 2020 Demo</a> <a href="https://github.com/IGNW/devnet-create-2020" target="_blank">{repo}</a></h1>
+</div>
+<div class="row">
+    <div class="col-3 col-s-3 menu row scrolling">
+      <ul>
+        {% for script in scripts %}
+        <li id="{{script['id']}}">{{ script['name'] }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+
+    <div class="col-9 col-s-9">
+        <div>
+            <h1 id="script_title">Welcome</h1>
+            <hr>
+        </div>
+        <div class="output scrolling" id="script_output">
+            <p>Welcome to the IGNW DevNet Create 2020 Demo!</p>
+            Presenters:
+            <ul>
+              <li><a href="mailto:joej@ignw.io">Joe Jacobs</a></li>
+              <li><a href="mailto:tige@ignw.io">Tige Phillips</a></li>
+              <li><a href="mailto:jwhittle@ignw.io">Jacob Whittle</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="footer"> 
+  <center><img src="{{ url_for('static', filename='images/Logo+orngwhite.png') }}"></center> 
+  <center><a href="https://ignw.io" target="_blank">IGNW</a> <a href="https://goo.gl/maps/bsQB3aMX1KU6QPyv6" target="_blank">5550 SW MACADAM AVE. SUITE 320, PORTLAND, OR, 97239</a> <a href="mailto:info@ignw.io">INFO@IGNW.IO</a></center> 
+</div>
+
+<script>
+    $("li").click(function() {
+      $("#script_title").text($(this).text());
+      $("#script_output").load("script/" + $(this).data('data_id'));
+      //$("#script_output").text("some updated text " + $(this).text() + ": " + $(this).data('data_id'))
+    });
+
+    {% for script in scripts %}
+    $("#{{ script['id'] }}").data('data_id', "{{ script['id'] }}" )
+    {% endfor %}
+
+</script>
+
+</body>
+</html>

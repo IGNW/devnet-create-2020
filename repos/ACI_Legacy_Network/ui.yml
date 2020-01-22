@@ -1,0 +1,33 @@
+data_center:
+    type: dropdown
+    options:
+        - Primary
+        - Secondary
+        - Backup
+application_profile:
+    type: dropdown
+    options:
+        - Legacy
+        - Current
+        - Previous
+epg_name:
+    type: text
+create_bridge_domain:
+    type: checkbox 
+ip_subnet_mask:
+    type: text
+route:
+    type: checkbox
+
+cucm_device_pools:
+    type: dropdown
+    options:
+        {% for dp in cucm_device_pools %}
+        - {{ dp }}
+        {% endfor %}
+cucm_regions:
+    type: dropdown
+    options:
+        {% for reg in cucm_regions %}
+        - {{ reg }}
+        {% endfor %}

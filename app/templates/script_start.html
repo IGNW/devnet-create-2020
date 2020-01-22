@@ -1,0 +1,17 @@
+<script>
+    $( function() {
+      $( ".widget input[type=submit], .widget a, .widget button" ).button();
+      $( "button, input, a" ).click( function( event ) {
+        event.preventDefault();
+        $("#script_output").load(event.currentTarget.href)
+      } );
+    } );
+</script>
+<div>
+This is the starting page for script {{ script_name }}
+</div>
+<div>
+<a class="ui-button ui-widget ui-corner-all" id="start_button" href="/run_script/{{ script_name }}">Start Script</a>
+
+
+

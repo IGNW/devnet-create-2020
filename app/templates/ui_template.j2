@@ -1,0 +1,33 @@
+{% for k,v in details.items() %}
+
+<form id="ui">
+{% if v.type == 'text' %}
+{{ k }}
+<input type="text" name="{{ k }}" value="{{ v.default }}"><br>
+<hr>
+{% elif v.type == 'checkbox' %}
+{{ k }}
+<input type="checkbox" name="{{ k }}"><br>
+<hr>
+{% elif v.type == 'hidden' %}
+<input hidden type="text" name="{{ k }}" value="{{ v.default }}"><br>
+{% elif v.type == 'dropdown' %}
+<label>{{ k }}
+<select name="{{ k }}" size="4">
+    {% for option in v.options %}
+    <option value="{{ option }}">{{ option }}</option>
+    {% endfor %}
+</select></label><br>
+<hr>
+{% endif %}
+{% endfor %}
+<input type="submit">
+</form>
+
+<script>
+    $( "#ui" ).submit(function( event ) {
+        event.preventDefault();
+        $("#script_output").load("/run_script/{{ script }}", $("#ui").serializeArray());
+    });
+</script>
+
