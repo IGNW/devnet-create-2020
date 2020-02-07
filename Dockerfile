@@ -4,7 +4,7 @@ FROM python:3.8-alpine
 RUN apk add --update --no-cache openssh-client git 
 
 # clone our private repository
-RUN git clone https://github.com/IGNW/devnet-create-2020.git && cd devnet-create-2020 && git checkout jacobs-add-flask-gui-to-repo 
+RUN git clone https://github.com/IGNW/devnet-create-2020.git && cd devnet-create-2020 && git checkout jacobs-clean-up-repo-and-get-dockerfile-working
 
 RUN git clone https://github.com/IGNW/dc_2020_aci_tenants.git devnet-create-2020/repos/dc_2020_aci_tenants
 

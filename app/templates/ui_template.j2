@@ -9,6 +9,10 @@
 {{ k }}
 <input type="checkbox" name="{{ k }}"><br>
 <hr>
+{% elif v.type == 'password' %}
+{{ k }}
+<input type="password" name="{{ k }}"><br>
+<hr>
 {% elif v.type == 'hidden' %}
 <input hidden type="text" name="{{ k }}" value="{{ v.default }}"><br>
 {% elif v.type == 'dropdown' %}
