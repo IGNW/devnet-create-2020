@@ -137,3 +137,4 @@ notes.txt
 Pipfile.lock
 .DS_Store
 .devcontainer
+repos/
