@@ -134,16 +134,17 @@ class SourceControlMgmt():
             return True
         else:
             raise SCMCreateBranchError("A new branch was not able to be created")
-
-    def write_data_to_file_in_repo(self, data, file_path=None, file_name=None):
+    
+    def write_data_to_file_in_repo(self, data, file_path=None, file_name=None, append_timestamp=False, as_yaml=False):
         """
-        Write the yaml data to a file in the repo
+        Write the data to a file in the repo
         """
-        if not isinstance(data, dict):
-            raise TypeError('Must pass a dictionary to this function')
 
         if file_path is None:
             raise TypeError('Must pass a string with the folder name of where the file will be stored into this function')
+        
+        if as_yaml and not isinstance(data, dict):
+            raise TypeError('Must pass a dictionary to this function')
 
         # if 'schema' not in data.keys() and 'epgname' not in data.keys():
         #    raise ValueError('Must be a properly formatted aci dictionary object to use this function')
@@ -151,7 +152,15 @@ class SourceControlMgmt():
         now = datetime.now()
         str_now = now.strftime("%Y%m%d-%H%M%S")
 
-        self.filename = f"{file_name}-{str_now}.yaml"
+        if append_timestamp:
+            file_parts = file_name.split('.')
+            if len(file_parts) > 1:
+                self.filename = f"{file_parts[0]}-{str_now}.{file_parts[1]}"
+            else:
+                self.filename = f"{file_name}-{str_now}"
+        else:
+            self.filename = f"{file_name}"
+
 
         if self.repo_path and self.repo_path.exists() is True and self.repo_path.is_dir() is True:
             self.full_dir_path = self.repo_path / f"{file_path}"
@@ -159,12 +168,16 @@ class SourceControlMgmt():
             self.relative_file_path = f'{file_path}/{self.filename}' if file_path else f'{self.filename}'
 
             if self.full_file_path.exists():
-                raise SCMWriteFileError('This file already exists in the repo')
+                raise SCMWriteFileError(f'This file already exists in the repo: {self.full_file_path}')
             elif not self.full_dir_path.exists():
                 raise SCMWriteFileError('The path provided to save the file in does not exist')
             else:
-                with open(self.full_file_path, 'w') as outfile:
-                    yaml.dump(data, outfile, explicit_start=True, explicit_end=True, default_flow_style=False)
+                if as_yaml:
+                    with open(self.full_file_path, 'w') as outfile:
+                        yaml.dump(data, outfile, explicit_start=True, explicit_end=True, default_flow_style=False)
+                else:
+                    with open(self.full_file_path, 'w') as outfile:
+                        outfile.write(data)
         else:
             raise SCMWriteFileError('You must have a repo cloned before trying to create a file')
 
@@ -241,6 +254,7 @@ class SourceControlMgmt():
             print(e)
             print(type(e))
             print(dir(e))
+            print(request)
             raise
 
     def get_github_repo_id(self):
