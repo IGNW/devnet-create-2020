@@ -3,7 +3,11 @@
 <form id="ui">
 {% if v.type == 'text' %}
 {{ k }}
+{% if v.regex %}
 <input type="text" name="{{ k }}" value="{{ v.default }}" pattern="{{ v.regex }}"><br>
+{% else %}
+<input type="text" name="{{ k }}" value="{{ v.default }}"><br>
+{% endif %}
 <hr>
 {% elif v.type == 'ip_cidr' %}
 {{ k }}
