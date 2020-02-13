@@ -5,6 +5,10 @@
 {{ k }}
 <input type="text" name="{{ k }}" value="{{ v.default }}"><br>
 <hr>
+{% elif v.type == 'ip_cidr' %}
+{{ k }}
+<input type="text" name="{{ k }}" title="Enter a valid IP address with CIDR notation.  Example '127.0.0.1/32'" pattern="((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}/(?:\d|[12]\d|3[01])$" value="{{ v.default }}"><br>
+<hr>
 {% elif v.type == 'checkbox' %}
 {{ k }}
 <input type="checkbox" name="{{ k }}" value="1"><br>
@@ -17,7 +21,7 @@
 <input hidden type="text" name="{{ k }}" value="{{ v.default }}"><br>
 {% elif v.type == 'dropdown' %}
 <label>{{ k }}
-<select name="{{ k }}" size="4">
+<select name="{{ k }}" size="1">
     {% for option in v.options %}
     <option value="{{ option }}">{{ option }}</option>
     {% endfor %}
