@@ -9,11 +9,24 @@
   <script src=""></script>
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<body>
+
 <div class="header">
-    <h1><a href="#" onclick="window.location.reload(true);"><img src="{{ url_for('static', filename='images/Logo+orngwhite.png') }}">DevNet 2020 Demo</a> <a href="https://github.com/IGNW/devnet-create-2020" target="_blank">{repo}</a></h1>
+  &nbsp;
+    <img src="{{ url_for('static', filename='images/Logo+orngwhite.png') }}">&nbsp;&nbsp;&nbsp;<p>DevNet 2020</p> >
+    
 </div>
-<div class="row">
+
+<nav>
+  <ul>
+<a href="#base.html">Home</a>&nbsp;&nbsp;
+<a href="https://github.com/IGNW/devnet-create-2020">Devnet-repo</a>
+</ul>
+</nav>
+
+
+<html>
+
+  <div class="row">
     <div class="col-3 col-s-3 menu row scrolling">
       <ul>
         {% for script in scripts %}
@@ -22,25 +35,32 @@
       </ul>
     </div>
 
-
+    
     <div class="col-9 col-s-9">
-        <div>
-            <h1 id="script_title">Welcome</h1>
-            <hr>
-        </div>
-        <div class="output scrolling" id="script_output">
-            <p>Welcome to the IGNW DevNet Create 2020 Demo!</p>
-            Presenters:
-            <ul>
-              <li><a href="mailto:joej@ignw.io">Joe Jacobs</a></li>
-              <li><a href="mailto:tige@ignw.io">Tige Phillips</a></li>
-              <li><a href="mailto:jwhittle@ignw.io">Jacob Whittle</a></li>
-            </ul>
+      <div>
+          <h1 id="script_title">Welcome</h1>
+          <hr>
+      </div>
+      <div class="output scrolling" id="script_output">
+          <p>Welcome to the IGNW DevNet Create 2020 Demo!</p>
+          Presenters:
+          <ul>
+            <li><a href="mailto:joej@ignw.io">Joe Jacobs</a></li>
+            <li><a href="mailto:tige@ignw.io">Tige Phillips</a></li>
+            <li><a href="mailto:jwhittle@ignw.io">Jacob Whittle</a></li>
+          </ul>
 
-        </div>
-    </div>
+      </div>
+  </div>
 
 </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <div class="footer"> 
   <center><img src="{{ url_for('static', filename='images/Logo+orngwhite.png') }}"></center> 
@@ -61,4 +81,6 @@
 </script>
 
 </body>
+</div>
+
 </html>
