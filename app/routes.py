@@ -29,7 +29,7 @@ def script_start_point(script):
 @app.route('/run_script/<script>', methods=['GET', 'POST'])
 def run_script(script):
     if flask.request.method == 'GET':
-        file_path = Path(".") / "repos" / script / "main.py"
+        file_path = Path(".") / "repos" / script / "gui" / "main.py"
         file_path = file_path.resolve()
 
         spec = importlib.util.spec_from_file_location('main', file_path)
@@ -43,7 +43,7 @@ def run_script(script):
         return ui(script, "ui.yml", **variables)
 
     elif flask.request.method == 'POST': 
-        file_path = Path(".") / "repos" / script / "main.py"
+        file_path = Path(".") / "repos" / script / "gui" / "main.py"
         file_path = file_path.resolve()
 
         spec = importlib.util.spec_from_file_location('main', file_path)
@@ -60,7 +60,7 @@ def run_script(script):
 
 def ui(script, ui_name, **kwargs):
     ui_details = {}
-    templateLoader = FileSystemLoader(searchpath=f'./repos/{script}')
+    templateLoader = FileSystemLoader(searchpath=f'./repos/{script}/gui')
     templateEnv = Environment(loader=templateLoader)
     template = templateEnv.get_template(ui_name)
     raw_ui = template.render(**kwargs)
