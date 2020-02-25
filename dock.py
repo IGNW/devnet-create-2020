@@ -26,5 +26,3 @@ elif args.action == "delete":
     subprocess.run(command)
 else:
     print("invalid option")
-
-

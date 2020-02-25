@@ -134,7 +134,7 @@ class SourceControlMgmt():
             return True
         else:
             raise SCMCreateBranchError("A new branch was not able to be created")
-    
+
     def write_data_to_file_in_repo(self, data, file_path=None, file_name=None, append_timestamp=False, as_yaml=False):
         """
         Write the data to a file in the repo
@@ -142,7 +142,7 @@ class SourceControlMgmt():
 
         if file_path is None:
             raise TypeError('Must pass a string with the folder name of where the file will be stored into this function')
-        
+
         if as_yaml and not isinstance(data, dict):
             raise TypeError('Must pass a dictionary to this function')
 
@@ -160,7 +160,6 @@ class SourceControlMgmt():
                 self.filename = f"{file_name}-{str_now}"
         else:
             self.filename = f"{file_name}"
-
 
         if self.repo_path and self.repo_path.exists() is True and self.repo_path.is_dir() is True:
             self.full_dir_path = self.repo_path / f"{file_path}"
