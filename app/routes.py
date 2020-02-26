@@ -54,6 +54,11 @@ def run_script(script):
         return render_template('output.j2', data=output)
 
 
+@app.route('/welcome', methods=['GET'])
+def welcome():
+    return render_template("welcome.html")
+
+
 def ui(script, ui_name, **kwargs):
     ui_details = {}
     templateLoader = FileSystemLoader(searchpath=f'./repos/{script}/gui')

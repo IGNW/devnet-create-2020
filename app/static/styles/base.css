@@ -105,8 +105,7 @@ padding: 15px;
     padding: 0;
   }
 
-
-   nav a {
+  nav span {
     padding: 2px;
     color: white;
     padding: 8px;
@@ -116,10 +115,9 @@ padding: 15px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.24);
   }
 
-   nav a:hover {
+   nav span:hover {
       background-color: #0099cc;
       color: black;
-    
   }
 
   .footer {
@@ -132,9 +130,6 @@ padding: 15px;
 
    img {
       width: 150px;
-   
-     
-     
   }
   
   .menu ul {
