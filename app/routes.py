@@ -13,7 +13,7 @@ import sys
 def index():
     # Load up all the scripts from the user directory
     script_data = get_repo_name()
-    return render_template('base.html', scripts=script_data)
+    return render_template('base.j2', scripts=script_data)
 
 
 @app.route('/script/<script>')
