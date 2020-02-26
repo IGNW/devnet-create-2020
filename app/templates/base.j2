@@ -12,14 +12,16 @@
 
 <div class="header">
   &nbsp;
-    <img src="{{ url_for('static', filename='images/Logo+orngwhite.png') }}">&nbsp;&nbsp;&nbsp;<p>DevNet 2020</p> >
+    <img src="{{ url_for('static', filename='images/Logo+orngwhite.png') }}">&nbsp;&nbsp;&nbsp;<p>DevNet Create 2020</p> >
     
 </div>
 
 <nav>
   <ul>
-<a href="#base.html">Home</a>&nbsp;&nbsp;
-<a href="https://github.com/IGNW/devnet-create-2020">Devnet-repo</a>
+<span class="fake-link" id="home">Home</span>
+<span class="fake-link" id="main-repo">Main Repo</span>
+<span class="fake-link" id="aci-legacy-tenant-repo">ACI Legacy Tenant Repo</span>
+<span class="fake-link" id="aci-appliance-repo">ACI Appliance Repo</span>
 </ul>
 </nav>
 
@@ -42,13 +44,6 @@
           <hr>
       </div>
       <div class="output scrolling" id="script_output">
-          <p>Welcome to the IGNW DevNet Create 2020 Demo!</p>
-          Presenters:
-          <ul>
-            <li><a href="mailto:joej@ignw.io">Joe Jacobs</a></li>
-            <li><a href="mailto:tige@ignw.io">Tige Phillips</a></li>
-            <li><a href="mailto:jwhittle@ignw.io">Jacob Whittle</a></li>
-          </ul>
 
       </div>
   </div>
@@ -78,6 +73,26 @@
     $("#{{ script['id'] }}").data('data_id', "{{ script['id'] }}" )
     {% endfor %}
 
+    $(document).ready(function(){
+      $('#script_output').load("welcome")
+    })
+
+    $("#home").click(function() {
+      $("#script_title").text("Welcome");
+      $("#script_output").load("welcome");
+    })
+
+    $("#main-repo").click(function() {
+      window.open("https://github.com/IGNW/devnet-create-2020", "_blank");
+    })
+
+    $("#aci-legacy-tenant-repo").click(function() {
+      window.open("https://github.com/IGNW/dc_2020_aci_legacy_tenant", "_blank");
+    })
+
+    $("#aci-appliance-repo").click(function() {
+      window.open("https://github.com/IGNW/dc_2020_aci_appliance_server", "_blank");
+    })
 </script>
 
 </body>
