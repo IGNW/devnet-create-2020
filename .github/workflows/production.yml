@@ -28,7 +28,7 @@ jobs:
 
     - name: Startup the test container
       if: always()
-      run: docker run --rm --name devnet_create_2020_production -dp 8080:5000 -d devnet-create-2020:production
+      run: docker run --rm --name devnet_create_2020_production -dp 80:5000 -d devnet-create-2020:production
 
   WhatsMyIP:
     runs-on: self-hosted
