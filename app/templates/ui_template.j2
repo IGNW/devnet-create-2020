@@ -33,12 +33,14 @@
 <hr>
 {% endif %}
 {% endfor %}
-<input type="submit">
+<input type="submit" id="btn_submit" value="Submit">
 </form>
 
 <script>
     $( "#ui" ).submit(function( event ) {
         event.preventDefault();
+        $("#btn_submit").attr("disabled", true);
+        $("#btn_submit").attr("value", "Loading...");
         $("#script_output").load("/run_script/{{ script }}", $("#ui").serializeArray());
     });
 </script>
