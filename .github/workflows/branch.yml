@@ -16,11 +16,11 @@ jobs:
       run: docker build . --file Dockerfile --no-cache --tag devnet-create-2020:branchtest
 
     - name: Stop the container
-      run: ./test_container.sh devnet_create_2020
+      run: ./check_container.sh devnet_create_2020_branch
 
     - name: Startup the test container
       if: always()
-      run: docker run --rm --name devnet_create_2020 -dp 8080:5000 -d devnet-create-2020:branchtest
+      run: docker run --rm --name devnet_create_2020_branch -dp 8080:5000 -d devnet-create-2020:branchtest
 
   WhatsMyIP:
     runs-on: self-hosted
