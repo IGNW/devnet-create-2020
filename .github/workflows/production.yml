@@ -27,7 +27,6 @@ jobs:
       run: ./check_container.sh devnet_create_2020_production
 
     - name: Startup the test container
-      if: always()
       run: docker run --rm --name devnet_create_2020_production -dp 80:5000 -d devnet-create-2020:production
 
   WhatsMyIP:
@@ -35,3 +34,4 @@ jobs:
     steps:
     - name: Digit
       run: dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
+

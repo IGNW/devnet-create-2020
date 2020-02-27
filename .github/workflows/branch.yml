@@ -19,7 +19,6 @@ jobs:
       run: ./check_container.sh devnet_create_2020_branch
 
     - name: Startup the test container
-      if: always()
       run: docker run --rm --name devnet_create_2020_branch -dp 8080:5000 -d devnet-create-2020:branchtest
 
   WhatsMyIP:
