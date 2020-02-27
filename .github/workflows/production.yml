@@ -35,10 +35,3 @@ jobs:
     steps:
     - name: Digit
       run: dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
-
-
-  WhatsMyIP:
-    runs-on: self-hosted
-    steps:
-    - name: Digit
-      run: dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
