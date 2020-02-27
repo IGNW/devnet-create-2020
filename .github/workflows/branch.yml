@@ -15,17 +15,18 @@ jobs:
     - name: Build the docker image
       run: docker build . --file Dockerfile --no-cache --tag devnet-create-2020:branchtest
 
-  BranchProcess:
+  BranchAdmin:
     runs-on: self-hosted
     steps:
-    - uses: actions/checkout@v1
-
     - name: Stop the container
       run: docker stop devnet_create_2020:branchtest
 
     - name: Remove the container
       run: docker rm devnet_create_2020:branchtest
 
+  BranchStartup:
+    runs-on: self-hosted
+    steps:
     - name: Startup the test container
       run: docker run --name devnet_create_2020 -p 8080:5000 -d devnet-create-2020:branchtest
 
