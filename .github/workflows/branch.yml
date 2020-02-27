@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Build the docker image
-      run: docker build . --no-cache -tag devnet-create-2020:branchtest .
+      run: docker build . --no-cache -tag devnet-create-2020:branchtest
 
   BranchProcess:
     runs-on: self-hosted
