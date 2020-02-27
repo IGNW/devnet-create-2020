@@ -15,19 +15,20 @@ jobs:
     - name: Build the docker image
       run: docker build . --file Dockerfile --no-cache --tag devnet-create-2020:production
 
-  ProductionProcess:
+  BuildandRun:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v1
 
-    - name: Stop the container
-      run: docker stop devnet_create_2020:production
+    - name: Build the docker image
+      run: docker build . --file Dockerfile --no-cache --tag devnet-create-2020:production
 
-    - name: Remove the container
-      run: docker rm devnet_create_2020:production
+    - name: Stop the container
+      run: ./check_container.sh devnet_create_2020_production
 
     - name: Startup the test container
-      run: docker run --name devnet_create_2020 -p 80:5000 -d devnet-create-2020:production
+      if: always()
+      run: docker run --rm --name devnet_create_2020_production -dp 8080:5000 -d devnet-create-2020:production
 
   WhatsMyIP:
     runs-on: self-hosted
