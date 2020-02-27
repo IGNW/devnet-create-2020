@@ -18,8 +18,8 @@ jobs:
   BranchAdmin:
     runs-on: self-hosted
     steps:
-    # - name: Stop the container
-    #   run: docker stop devnet_create_2020:branchtest
+    - name: Stop the container
+      run: docker stop devnet_create_2020:branchtest
 
     - name: Startup the test container
       run: docker run --rm --name devnet_create_2020 -dp 8080:5000 -d devnet-create-2020:branchtest
