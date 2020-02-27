@@ -13,15 +13,21 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Build the docker image
-      run: docker build . --no-cache --file Dockerfile --tag ignw/devnet_create_2020:branchtest
+      run: ./dock.py rebuild
 
   BranchProcess:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v1
 
+    - name: Stop the container
+      run: ./dock.py stop
+
+    - name: Remove the container
+      run: ./dock.py delete
+
     - name: Startup the test container
-      run: docker run --rm --name devnet_branch -dp 8080:5000 ignw/devnet_create_2020:branchtest
+      run: ./dock.py start
 
   WhatsMyIP:
     runs-on: self-hosted
