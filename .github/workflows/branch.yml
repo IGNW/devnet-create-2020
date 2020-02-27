@@ -7,18 +7,13 @@ on:
 
 jobs:
 
-  Build:
+  BuildandRun:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v1
 
     - name: Build the docker image
       run: docker build . --file Dockerfile --no-cache --tag devnet-create-2020:branchtest
-
-  BranchAdmin:
-    runs-on: self-hosted
-    steps:
-    - uses: actions/checkout@v1
 
     - name: Stop the container
       run: ./test_container.sh
