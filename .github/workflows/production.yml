@@ -1,8 +1,8 @@
-name: Branch
+name: Production
 
 on: 
   push:
-    branches-ignore: 
+    branches:
       - master
 
 jobs:
@@ -13,21 +13,28 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Build the docker image
-      run: docker build --no-cache -t devnet-create-2020:branchtest
+      run: docker build --no-cache -t devnet-create-2020:production
 
-  BranchProcess:
+  ProductionProcess:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v1
 
     - name: Stop the container
-      run: docker stop devnet_create_2020:branchtest
+      run: docker stop devnet_create_2020:production
 
     - name: Remove the container
-      run: docker rm devnet_create_2020:branchtest
+      run: docker rm devnet_create_2020:production
 
     - name: Startup the test container
-      run: docker run --name devnet_create_2020 -p 8080:5000 -d devnet-create-2020:branchtest
+      run: docker run --name devnet_create_2020 -p 80:5000 -d devnet-create-2020:production
+
+  WhatsMyIP:
+    runs-on: self-hosted
+    steps:
+    - name: Digit
+      run: dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
+
 
   WhatsMyIP:
     runs-on: self-hosted
