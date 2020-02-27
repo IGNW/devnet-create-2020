@@ -18,6 +18,8 @@ jobs:
   BranchAdmin:
     runs-on: self-hosted
     steps:
+    - uses: actions/checkout@v1
+
     - name: Stop the container
       run: ./test_container.sh
 
