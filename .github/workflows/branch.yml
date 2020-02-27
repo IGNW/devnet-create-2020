@@ -21,4 +21,4 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Startup the test container
-      run: docker run --rm -p 8080:5000 ignw/devnet_create_2020:branchtest
+      run: docker run --rm -dp 8080:5000 ignw/devnet_create_2020:branchtest
