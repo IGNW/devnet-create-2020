@@ -1,3 +1,6 @@
+![Production](https://github.com/IGNW/devnet-create-2020/workflows/Production/badge.svg)
+![Branch](https://github.com/IGNW/devnet-create-2020/workflows/Branch/badge.svg)
+
 # Building the Container
 Using the standard library argparse control the container
 * ./dock.py build - Build the initial container image
