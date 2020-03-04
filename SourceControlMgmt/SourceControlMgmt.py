@@ -296,7 +296,8 @@ class SourceControlMgmt():
                                           title: $title,
                                           body: $body}) {
                     pullRequest {
-                        number
+                        number,
+                        url
                     }
                 }
             }
