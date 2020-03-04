@@ -31,6 +31,8 @@
     {% endfor %}
 </select></label><br>
 <hr>
+{% elif v.type == 'paragraph' %}
+{{ v.default | safe }}
 {% endif %}
 {% endfor %}
 <input type="submit" id="btn_submit" value="Submit">
